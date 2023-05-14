@@ -1,0 +1,33 @@
+@import '@Styles/variables';
+
+.card {
+  &__container {
+    padding: $card-padding;
+    box-shadow: $default-shadow;
+    border-radius: $border-radius-medium;
+    width: 100%;
+
+    .card {
+      &__body {
+      }
+
+      &__header {
+        color: $primary-color;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-large;
+        font-style: italic;
+        margin-bottom: $card-section;
+
+        img {
+          width: 100%;
+          height: 120px;
+          object-fit: cover;
+        }
+      }
+
+      &__footer {
+        margin-top: 52px;
+      }
+    }
+  }
+}

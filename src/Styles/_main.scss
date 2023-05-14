@@ -1,0 +1,73 @@
+@import '@Styles/variables';
+@import '@Styles/mixins';
+
+:root {
+  font-family: Open-Sans, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+#root {
+  padding: 52px;
+  display: flex;
+  align-items: center;
+}
+
+input,
+button,
+select {
+  width: 100%;
+  padding: $controls-padding;
+  border: 2px solid $primary-gray-color;
+  border-radius: $border-radius-small;
+  margin-bottom: 12px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 32px;
+}
+
+input::placeholder,
+select {
+  color: $primary-gray-color;
+}
+
+input:focus {
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+
+input:focus::placeholder {
+  position: absolute;
+  top: 8px;
+  font-size: 12px;
+  visibility: visible;
+}
+
+button {
+  width: 100%;
+  color: white;
+  background-color: $primary-color;
+  padding: $controls-padding;
+  border-radius: $border-radius-small;
+  outline: 0;
+  border: 0;
+  font-weight: 700;
+  margin-top: 32px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background-color: $secondary-color;
+  color: $primary-color;
+}
+
+body {
+  margin: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+}

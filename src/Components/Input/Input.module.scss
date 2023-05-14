@@ -1,0 +1,32 @@
+@import '@Styles/variables';
+
+.input {
+  &__group {
+    position: relative;
+
+    input {
+      padding: 22px;
+      z-index: 2;
+      background-color: transparent;
+    }
+
+    input:focus {
+      + .input__label {
+        margin-top: 4px;
+        font-size: 14px;
+        transition: all 0.15s ease-in-out;
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 22px;
+    color: $primary-gray-color;
+    z-index: 1;
+    transition: all 0.15s ease-in-out;
+    z-index: -1;
+  }
+}

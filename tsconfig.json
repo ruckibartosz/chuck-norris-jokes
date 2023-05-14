@@ -12,6 +12,7 @@
       "@Utils/*": ["src/Utils/*"],
       "@Types/*": ["src/Types/*"],
       "@Config/*": ["src/Config/*"],
+      "@Styles/*": ["src/Styles/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
