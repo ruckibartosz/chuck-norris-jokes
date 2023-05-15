@@ -1,27 +1,33 @@
 /* Font */
-$font-main: 'Roboto', sans-serif;
-
+$font-main: 'Montserrat', sans-serif;
 $font-weight-bold: 800;
 $font-weight-semibold: 600;
 $font-weight-medium: 400;
-
 $font-size-large: 24px;
 $font-size-medium: 16px;
+$font-size-small: 12px;
+$font-size-xsmall: 8px;
 
 /* Spacing */
-$card-padding: 52px; 
-$card-section: 24px;
-$controls-padding: 18px;
+$card-section: 60px;
+$card-section-small: 40px;
+$controls-padding: 12px 22px;
+$controls-padding-small: 5px 22px;
+$controls-padding-xsmall: 0 22px;
 
 /* Colors */
-$primary-color: #34394F;
-$secondary-color: #F5F6F8;
-$primary-gray-color: #C4C4C4;
+$primary-color: #34394f;
+$secondary-color: #f5f6f8;
+$primary-gray-color: #c4c4c4;
+$secondary-gray-color: #e9e9e9;
+$error-color: #f39a9a;
 
 /* Border radius */
-$border-radius-medium: 12px;
+$border-radius-medium: 24px;
 $border-radius-small: 6px;
 
 /* Shadow */
-$default-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$default-shadow: rgb(50 50 93 / 25%) 0 6px 12px -2px, rgb(0 0 0 / 30%) 0 3px 7px -3px;
 
+/* Transition */
+$default-transition: all 0.15s ease-in-out;

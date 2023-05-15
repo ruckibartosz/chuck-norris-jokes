@@ -1,32 +1,54 @@
 @import '@Styles/variables';
+@import '@Styles/mixins';
 
 .input {
   &__group {
     position: relative;
+    margin-bottom: 28px;
 
-    input {
-      padding: 22px;
+    input.input__element {
       z-index: 2;
+      padding: $controls-padding;
       background-color: transparent;
+
+      @include devices(tablet) {
+        height: 40px;
+        font-size: $font-size-small;
+      }
     }
 
-    input:focus {
-      + .input__label {
-        margin-top: 4px;
-        font-size: 14px;
-        transition: all 0.15s ease-in-out;
+    input.input__element,
+    .input.input__element {
+      &--focused {
+        padding-top: 30px;
+        border: 0;
+        outline: 2px solid $primary-color;
+
+        + .input__label {
+          margin: $controls-padding-xsmall;
+          font-size: 12px;
+          transition: $default-transition;
+
+          @include devices(tablet) {
+            font-size: $font-size-xsmall;
+          }
+        }
       }
     }
   }
 
   &__label {
     position: absolute;
-    top: 0;
+    top: 8px;
     left: 0;
-    margin: 22px;
-    color: $primary-gray-color;
-    z-index: 1;
-    transition: all 0.15s ease-in-out;
     z-index: -1;
+    margin: 10px 22px;
+    color: $primary-gray-color;
+    transition: $default-transition;
+
+    @include devices(tablet) {
+      margin: 6px 22px;
+      font-size: $font-size-small;
+    }
   }
 }

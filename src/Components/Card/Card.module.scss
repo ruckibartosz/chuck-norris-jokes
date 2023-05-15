@@ -1,31 +1,52 @@
 @import '@Styles/variables';
+@import '@Styles/mixins';
 
 .card {
   &__container {
-    padding: $card-padding;
-    box-shadow: $default-shadow;
+    max-width: 600px;
+    padding: 52px 72px;
     border-radius: $border-radius-medium;
-    width: 100%;
+    box-shadow: $default-shadow;
+
+    @include devices(tablet) {
+      padding: 32px 52px;
+    }
+
+    @include devices(mobile) {
+      padding: 32px 18px;
+    }
 
     .card {
-      &__body {
-      }
-
       &__header {
-        color: $primary-color;
-        font-weight: $font-weight-semibold;
+        margin-bottom: $card-section;
         font-size: $font-size-large;
         font-style: italic;
-        margin-bottom: $card-section;
+        font-weight: $font-weight-semibold;
+        color: $primary-color;
+        overflow-wrap: break-word;
+
+        @include devices(tablet) {
+          margin-bottom: $card-section-small;
+          font-size: $font-size-medium;
+        }
 
         img {
           width: 100%;
-          height: 120px;
+          height: 180px;
           object-fit: cover;
+          object-position: 0 25%;
+          border-radius: $border-radius-small;
+        }
+
+        div {
+          width: 100%;
+          margin-top: 20px;
         }
       }
 
       &__footer {
+        display: flex;
+        gap: 12px;
         margin-top: 52px;
       }
     }

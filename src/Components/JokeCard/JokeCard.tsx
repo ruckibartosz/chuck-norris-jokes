@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 
 import { Card } from '@Components/Card';
-import { Select } from '@Components/Select';
+import Select from '@Components/Select';
 import Input from '@Components/Input';
+import Counter from '@Components/Counter';
 
 type JokeCardProps = {
   joke: string;
   avatarUrl: string;
-  onCategorySelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCategorySelect: (e: string) => void;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onGenerateJokeClick: () => void;
   onSaveJokesClick: () => void;
+  onCounterValueChange: (counterVal: number, hasCounterError: boolean) => void;
 };
 
 const JokeCard: React.FC<JokeCardProps> = ({
@@ -20,42 +22,58 @@ const JokeCard: React.FC<JokeCardProps> = ({
   onInputChange,
   onGenerateJokeClick,
   onSaveJokesClick,
+  onCounterValueChange,
 }) => {
   const [impersonateVal, setImpersonateVal] = useState('Chuck Norris');
+  const [hasCounterError, setHasCounterError] = useState(false);
+  const [counterVal, setCounterVal] = useState(0);
 
   const handleOnImpersonateInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputChange(e);
     setImpersonateVal(e.target.value);
   };
 
+  const handleOnCounterChange = (val: number, hasError: boolean) => {
+    setCounterVal(val);
+    setHasCounterError(hasError);
+
+    onCounterValueChange(val, hasError);
+  };
+
   return (
     <Card.Container>
       <Card.Header>
         <img src={avatarUrl} alt='avatar' />
-        {joke}
+        <div>
+          <q>{joke}</q>
+        </div>
       </Card.Header>
       <Card.Body>
-        <Select.Container onOptionClick={(e) => console.log('e = ', e)} defaultValue='opt2'>
-          <Select.Item name='opt1' id='opt1'>
-            Opcja 1
-          </Select.Item>
-          <Select.Item name='opt2' id='opt2'>
-            Opcja 2
-          </Select.Item>
-        </Select.Container>
+        <Select
+          onOptionClick={onCategorySelect}
+          placeholder='Select category'
+          options={[
+            { name: 'Explicit', id: 'explicit' },
+            { name: 'Travel', id: 'travel' },
+          ]}
+        />
         <Input
           type='text'
           onChange={handleOnImpersonateInputChange}
           placeholder='Impersonate Chuck Norris'
         />
-
-        <button onClick={onGenerateJokeClick}>
-          Draw a random {impersonateVal ? impersonateVal : 'Chuck Norris'} joke
+        <button className='primary' onClick={onGenerateJokeClick}>
+          Draw a random {impersonateVal ? impersonateVal : 'Chuck Norris'} Joke
         </button>
       </Card.Body>
       <Card.Footer>
-        <button onClick={onSaveJokesClick} className='secondary'>
-          Save jokes
+        <Counter minValue={1} maxValue={100} onCounterClick={handleOnCounterChange} />
+        <button
+          onClick={onSaveJokesClick}
+          className={`${hasCounterError || counterVal === 0 ? 'secondary' : 'primary'}`}
+          disabled={hasCounterError || counterVal == 0 ? true : false}
+        >
+          Save Jokes
         </button>
       </Card.Footer>
     </Card.Container>

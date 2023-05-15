@@ -1,0 +1,60 @@
+@import '@Styles/variables';
+@import '@Styles/mixins';
+
+.counter {
+  &__container {
+    .counter {
+      &__error-label {
+        position: absolute;
+        display: none;
+
+        @include devices(tablet) {
+          font-size: $font-size-small;
+        }
+      }
+    }
+
+    &.error {
+      .counter {
+        &__body {
+          background-color: $error-color;
+        }
+        &__error-label {
+          display: block;
+          margin-top: 10px;
+          font-weight: $font-weight-semibold;
+          color: $error-color;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  &__body {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-around;
+    width: 120px;
+    padding: 0 12px;
+    background-color: $secondary-color;
+    border-radius: $border-radius-small;
+
+    @include devices(tablet) {
+      height: 40px;
+    }
+
+    svg {
+      color: $primary-color;
+      cursor: pointer;
+    }
+
+    input {
+      width: 20px;
+      padding: 0;
+      text-align: center;
+      background: transparent;
+      border: 0;
+      outline: 0;
+    }
+  }
+}

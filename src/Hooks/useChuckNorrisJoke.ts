@@ -17,19 +17,45 @@ const useChuckNorrisJoke = () => {
 
   const fetchRandomChuckNorrisJoke = async () => {
     const randomJoke = await axios.get<Joke>(`${API_URL}/random`);
-    setJoke(randomJoke.data as unknown as Joke);
+    setJoke(randomJoke.data);
   };
 
-  const searchChuckNorrisJoke = async (category: string, name: string) => {
+  const searchChuckNorrisJoke = async (name: string, category?: string) => {
+    if (!category) {
+      const randomJoke = await axios.get<Joke>(`${API_URL}/random?name=${name}`);
+      setJoke(randomJoke.data);
+      return;
+    }
+
     const randomJoke = await axios.get<Joke>(`${API_URL}/random?name=${name}&category=${category}`);
-    setJoke(randomJoke.data as unknown as Joke);
+    setJoke(randomJoke.data);
+  };
+
+  const fetchListOfJokes = async (numberOfJokes: number, name: string, category?: string) => {
+    const arr = [];
+
+    if (!category) {
+      for (let i = 1; i <= numberOfJokes; i++) {
+        const joke = await axios.get<Joke>(`${API_URL}/random?name=${name}`);
+        arr.push(`${i + 1}.${joke.data.value} \n`);
+      }
+
+      return arr;
+    }
+
+    for (let i = 1; i <= numberOfJokes; i++) {
+      const joke = await axios.get<Joke>(`${API_URL}/random?name=${name}&category=${category}`);
+      arr.push(`${i}.${joke.data.value} \n`);
+    }
+
+    return arr;
   };
 
   useEffect(() => {
     fetchRandomChuckNorrisJoke();
   }, []);
 
-  return { joke, fetchRandomChuckNorrisJoke, searchChuckNorrisJoke };
+  return { joke, fetchRandomChuckNorrisJoke, searchChuckNorrisJoke, fetchListOfJokes };
 };
 
 export default useChuckNorrisJoke;

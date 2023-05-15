@@ -1,73 +1,61 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap';
 @import '@Styles/variables';
 @import '@Styles/mixins';
 
-:root {
-  font-family: Open-Sans, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+* {
+  box-sizing: border-box;
+  font-family: $font-main;
 }
 
 #root {
-  padding: 52px;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  padding: 32px;
 }
 
 input,
 button,
 select {
   width: 100%;
+  height: 56px;
   padding: $controls-padding;
   border: 2px solid $primary-gray-color;
   border-radius: $border-radius-small;
-  margin-bottom: 12px;
+
+  @include devices(tablet) {
+    font-size: $font-size-small;
+  }
 }
 
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 32px;
-}
-
-input::placeholder,
-select {
+input::placeholder {
   color: $primary-gray-color;
-}
-
-input:focus {
-  padding-top: 32px;
-  padding-bottom: 8px;
-}
-
-input:focus::placeholder {
-  position: absolute;
-  top: 8px;
-  font-size: 12px;
-  visibility: visible;
 }
 
 button {
   width: 100%;
-  color: white;
-  background-color: $primary-color;
   padding: $controls-padding;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background-color: $primary-color;
+  border: 0;
   border-radius: $border-radius-small;
   outline: 0;
-  border: 0;
-  font-weight: 700;
-  margin-top: 32px;
-  cursor: pointer;
+
+  @include devices(tablet) {
+    height: auto;
+  }
+
+  &.secondary {
+    color: $primary-color;
+    background-color: $secondary-color;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
-button.secondary {
-  background-color: $secondary-color;
-  color: $primary-color;
-}
-
-body {
-  margin: 0 !important;
-}
-
-* {
-  box-sizing: border-box;
+span {
+  margin: 12px 0;
 }

@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prettier:fix": "prettier --config ./prettier.config.cjs --write ./src/**/*.{css,scss,ts,tsx} ",
-    "prettier:check": "prettier --config ./prettier.config.cjs --check ./src/**/*.{css,scss,ts,tsx}",
+    "prettier:fix": "prettier --config ./.prettierrc --write ./src/**/*.{css,scss,ts,tsx} ",
+    "prettier:check": "prettier --config ./.prettierrc --check ./src/**/*.{css,scss,ts,tsx}",
     "stylelint": "npx stylelint \"./**/*.{css,scss,sass}\" --config \"./stylelint.config.cjs\"",
     "stylelint:fix": "npm run stylelint -- --fix",
     "preview": "vite preview"
@@ -22,6 +22,7 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "sass": "^1.62.1"
   },
   "devDependencies": {
