@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://ruckibartosz.github.io/chuck-norris-jokes",
+  "homepage": "https://ruckibartosz.github.io/chucknorrisjokes",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,7 +14,7 @@
     "stylelint:fix": "npm run stylelint -- --fix",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "lint-staged": {
     "./src/*.{js,jsx,ts,tsx}": "npm run lint",
